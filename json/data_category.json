@@ -1,41 +1,35 @@
 {
-    "catArrayList0": [
+    "catArrayList": [
         {
-            "category_name": "Cat A",
-            "img": "https:\/\/www.youtube.com\/watch?v=QCXaa1mEUK0&list=RDxE9FBL7jUGA&index=5",
+            "category_name": "CAT A",
+            "img": "http:\/\/apps.friendsit.xyz\/cartoonint\/img\/img_slider\/playstore.png",
             "videoArrayList": [
                 {
-                    "vdo_id": "111111111111111111111",
-                    "vdo_title": "222222222222222222",
-                    "vdo_desciption": "222233333333333333333"
-                },
-                {
-                    "vdo_id": "11111111111",
-                    "vdo_title": "cccccccccc",
-                    "vdo_desciption": "cccccuuuuuuuuu"
+                    "vdo_id": "Mh4yAgD5fU4",
+                    "vdo_title": "Tumse Pyaar Karke",
+                    "vdo_desciption": "Tumse Pyaar Karke Tumse Pyaar Karke Tumse Pyaar Karke"
                 }
             ]
-        }
-    ],
-    "catArrayList1": [
+        },
         {
-            "category_name": "Cat B",
-            "img": "https:\/\/www.youtube.com\/watch?v=QCXaa1mEUK0&list",
+            "category_name": "CAT B",
+            "img": "http:\/\/apps.friendsit.xyz\/cartoonint\/img\/img_slider\/female.png",
             "videoArrayList": [
                 {
-                    "vdo_id": "xxxxxxxxxxxxxxxxx",
-                    "vdo_title": "yyyyyyyyyyyyyyyyyyyy",
-                    "vdo_desciption": "zzzzzzzzzzzzzzzzzz"
-                },
+                    "vdo_id": "Bpd9w8cmEu",
+                    "vdo_title": "Ishq De Fanniyar - Slowed + Lofi ft",
+                    "vdo_desciption": "Ishq De Fanniyar - Slowed + Lofi ft Ishq De Fanniyar - Slowed + Lofi ft"
+                }
+            ]
+        },
+        {
+            "category_name": "CAT C",
+            "img": "http:\/\/apps.friendsit.xyz\/cartoonint\/img\/img_slider\/playstore.png",
+            "videoArrayList": [
                 {
-                    "vdo_id": "ddddddddddddddddd",
-                    "vdo_title": "ssssssssssssssss",
-                    "vdo_desciption": "ccccccccccccccccc"
-                },
-                {
-                    "vdo_id": "bbbbbbbbb",
-                    "vdo_title": "cccccccccc",
-                    "vdo_desciption": "dddddddddd"
+                    "vdo_id": "xE9FBL7jUGA",
+                    "vdo_title": "Nainowale Ne Full Video Song | Padmaavat |",
+                    "vdo_desciption": "Presenting the full video song 'Nainowale Ne' from the movie  Padmaavat in the voice of Neeti Mohan, Music by Sanjay Leela Bhansali and Lyrics by Siddharth - Garima.  "
                 }
             ]
         }

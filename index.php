@@ -55,14 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>";
     } elseif (isset($_POST['catArrayListNum'])) {
 
-        $catArrayListNum = $_POST['catArrayListNum'];
+        // $catArrayListNum = $_POST['catArrayListNum'];
         $category_name2 = $_POST['category_name2'];
 
         $json_data = file_get_contents("json/data_category.json");
         $catArrayList = json_decode($json_data, true);
 
         $catArrayList2 = array(
-            "catArrayList" . $catArrayListNum => array(
+            "catArrayList" => array(
                 array(
                     "category_name" => $category_name2,
                     "img" => $_POST["img_url2"],
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "vdo_desciption" => $_POST["vdo_description"]
         );
 
-        array_unshift($catArrayList["catArrayList" . $_POST["catArrayList"]][0]["videoArrayList"], $new_video);
+        array_unshift($catArrayList["catArrayList"][0]["videoArrayList"], $new_video);
 
         // // Save the updated JSON object to the file
         file_put_contents('json/data_category.json', json_encode($catArrayList));
