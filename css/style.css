@@ -1,0 +1,22 @@
+body {
+    margin: 0px;
+    padding: 10px;
+}
+
+#tabs {
+    text-align: center;
+    margin: 10px;
+}
+
+#tabs button {
+    background-color: #4399D4;
+    color: aliceblue;
+}
+
+.upload-section {
+    margin-top: 100px;
+}
+
+.btn-success {
+    margin-top: 20px;
+}
