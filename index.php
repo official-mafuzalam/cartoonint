@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('Successfully Submitted Slider data');
             window.location.href = '../cartoonint';
             </script>";
-    } elseif (isset($_POST['catArrayListNum'])) {
+    } elseif (isset($_POST['catArrayListN'])) {
 
         // $catArrayListNum = $_POST['catArrayListNum'];
         $category_name2 = $_POST['category_name2'];
@@ -86,9 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('Successfully Submitted Category data');
             window.location.href = '../cartoonint';
             </script>";
-    } elseif (isset($_POST['catArrayList'])) {
+    } elseif (isset($_POST['catArrayListNum'])) {
 
-        // $catArrayListNum = $_POST['catArrayListNum'];
+        $catArrayListNum = $_POST['catArrayListNum'];
         // $category_name2 = $_POST['category_name2'];
 
         $json_data = file_get_contents("json/data_category.json");
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "vdo_desciption" => $_POST["vdo_description"]
         );
 
-        array_unshift($catArrayList["catArrayList"][0]["videoArrayList"], $new_video);
+        array_unshift($catArrayList["catArrayList"][$catArrayListNum]["videoArrayList"], $new_video);
 
         // // Save the updated JSON object to the file
         file_put_contents('json/data_category.json', json_encode($catArrayList));
@@ -312,8 +312,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container text-center upload-section">
             <form action="index.php" method="post">
                 <div class="input-group">
-                    <input class="form-control" type="number" id="catArrayList" name="catArrayListNum"
-                        placeholder="Cat. Array List number" required>
+                    <input class="form-control" type="number" id="catArrayList" name="catArrayListN"
+                        placeholder="Cat. Array List number">
                 </div>
                 <br>
                 <div class="input-group">
@@ -344,7 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             <hr>
             <div class="text-center">
-                <a href="json/data_slider.json"><button class="btn btn-info">All Slider in JSON</button></a>
+                <a href="json/data_category.json"><button class="btn btn-info">All Slider in JSON</button></a>
             </div>
             <hr>
         </div>
@@ -368,7 +368,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container text-center upload-section">
             <form action="index.php" method="post">
                 <div class="input-group">
-                    <input class="form-control" type="number" id="catArrayList" name="catArrayList"
+                    <input class="form-control" type="number" id="catArrayList" name="catArrayListNum"
                         placeholder="Category Array List No:" required>
                 </div>
                 <br>
