@@ -1,1 +1,31 @@
-[]
+{
+  "catArrayList": [
+    {
+      "category_name": "A",
+      "img": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "videoArrayList": [
+        {
+          "vdo_id": "dyGC1LS3-b4",
+          "vdo_title": "Mujhe Pyaar Hua Tha Episode 17",
+          "vdo_desciption": "Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+        }
+      ]
+    },
+    {
+      "category_name": "B",
+      "img": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "videoArrayList": [
+        {
+          "vdo_id": "dyGC1LS3-b4",
+          "vdo_title": "2 Mujhe Pyaar Hua Tha Episode 17",
+          "vdo_desciption": "2 Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+        },
+        {
+          "vdo_id": "dyGC1LS3-b4",
+          "vdo_title": "Mujhe Pyaar Hua Tha Episode 17",
+          "vdo_desciption": "Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+        }
+      ]
+    }
+  ]
+}

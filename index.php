@@ -55,59 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>";
     } elseif (isset($_POST['catArrayListN'])) {
 
-        // $catArrayListNum = $_POST['catArrayListNum'];
-        $category_name2 = $_POST['category_name2'];
-
-        $json_data = file_get_contents("json/data_category.json");
-        $catArrayList = json_decode($json_data, true);
-
-        $catArrayList2 = array(
-            "catArrayList" => array(
-                array(
-                    "category_name" => $category_name2,
-                    "img" => $_POST["img_url2"],
-                    "videoArrayList" => array(
-                        array(
-                            "vdo_id" => $_POST["vdo_id2"],
-                            "vdo_title" => $_POST["vdo_title2"],
-                            "vdo_desciption" => $_POST["vdo_description2"]
-                        )
-                    )
-                )
-            )
-        );
-
-        $catArrayList = array_merge_recursive($catArrayList, $catArrayList2);
-
-
-        // // Save the updated JSON object to the file
-        file_put_contents('json/data_category.json', json_encode($catArrayList));
-
-        echo "<script>alert('Successfully Submitted Category data');
-            window.location.href = '../cartoonint';
-            </script>";
     } elseif (isset($_POST['catArrayListNum'])) {
-
-        $catArrayListNum = $_POST['catArrayListNum'];
-        // $category_name2 = $_POST['category_name2'];
-
-        $json_data = file_get_contents("json/data_category.json");
-        $catArrayList = json_decode($json_data, true);
-
-        $new_video = array(
-            "vdo_id" => $_POST["vdo_id"],
-            "vdo_title" => $_POST["vdo_title"],
-            "vdo_desciption" => $_POST["vdo_description"]
-        );
-
-        array_unshift($catArrayList["catArrayList"][$catArrayListNum]["videoArrayList"], $new_video);
-
-        // // Save the updated JSON object to the file
-        file_put_contents('json/data_category.json', json_encode($catArrayList));
-
-        echo "<script>alert('Successfully Submitted Video data');
-            window.location.href = '../cartoonint';
-            </script>";
 
     } elseif (isset($_POST['sliderDelete'])) {
 
@@ -148,264 +96,200 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Cartoon INT | cPannel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <!-- Navigation tabs -->
-        <div id="tabs">
-            <button class="tab" onclick="openTab(event, 'Tab1')" id="defaultOpen">Home</button>
-            <button class="tab" onclick="openTab(event, 'Tab2')">Img Slider</button>
-            <button class="tab" onclick="openTab(event, 'Tab3')">Item Slider</button>
-            <button class="tab" onclick="openTab(event, 'Tab4')">Cat Add</button>
-            <button class="tab" onclick="openTab(event, 'Tab5')">Video Add</button>
-            <!-- <button class="tab" href="upload.php">Image Upload</button> -->
-        </div>
-        <!-- <div id="tabs">
-            <button class="tab" onclick="openTab(event, 'Tab5')">Hospital</button>
-            <button class="tab" onclick="openTab(event, 'Tab6')">Daily News</button>
-            <button class="tab" onclick="openTab(event, 'Tab7')">Community</button>
-            <button class="tab" onclick="openTab(event, 'Tab8')">Sports</button>
-            <button class="tab" onclick="openTab(event, 'Tab9')">E-Seba</button>
-            <button class="tab" onclick="openTab(event, 'Tab10')">E-Commerce</button>
-        </div> -->
-    </div>
+    <?php
+    include 'inc/navbar.php';
+    ?>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item">
+                            <a class="tab nav-link" onclick="openTab(event, 'Tab1')" id="defaultOpen">
+                                <i class="fs-4 bi-grid"></i>
+                                <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                            </a>
+                        </li>
 
-
-
-
-    <!-- Tab content -->
-    <div id="Tab1" class="tabcontent">
-        <p class="text-center fs-4 fw-bold">Cartoon International Mobile Apps</p>
-        <h2 class="text-center">Dashboard</h2>
-        <?php
-
-        // Image Slider Data
-        $json_data = file_get_contents("json/data_slider.json");
-        $data = json_decode($json_data, true);
-
-        echo "<p class='text-center fs-3'>Server have Image Slider data: <span class='text-center fs-3 fw-bold'>" . count($data) . "</span></p>";
-
-        ?>
-    </div>
-
-    <!-- TAB 2 -->
-    <div id="Tab2" class="tabcontent">
-        <h1 class="text-center">Upload Image for Slider</h1>
-
-        <div class="container text-center upload-section">
-
-            <form action="index.php" method="post" enctype="multipart/form-data">
-                <div class="input-group text-center">
-                    <input type="file" class="form-control" id="file" name="photo_slider" aria-label="Upload" required>
+                        <li>
+                            <a class="tab nav-link" onclick="openTab(event, 'Tab2')">
+                                <i class="fs-4 bi-images"></i>
+                                <span class="ms-1 d-none d-sm-inline">Img Upload</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tab nav-link" onclick="openTab(event, 'Tab3')">
+                                <i class="fs-4 bi-images"></i>
+                                <span class="ms-1 d-none d-sm-inline">Slider Item</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tab nav-link" onclick="openTab(event, 'Tab4')">
+                                <i class="fs-4 bi-play-btn"></i>
+                                <span class="ms-1 d-none d-sm-inline">Category</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <input class="btn btn-success" type="submit" value="Upload">
-
-            </form>
-
-            <!-- <div class="text-center" style="margin-top: 50px;">
-                <a href="json_image/json_imgProduct.php"><button class="btn btn-info">All Product Images in
-                        JSON</button></a>
-            </div> -->
-            <?php
-
-            // Check if the form was submitted
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Check if file was uploaded without errors
-                if (isset($_FILES["photo_slider"]) && $_FILES["photo_slider"]["error"] == 0) {
-                    $allowed = array("jpg" => "image/jpg", "JPG" => "image/JPG", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                    $filename = $_FILES["photo_slider"]["name"];
-                    $filetype = $_FILES["photo_slider"]["type"];
-                    $filesize = $_FILES["photo_slider"]["size"];
-
-                    // Verify file extension
-                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                    if (!array_key_exists($ext, $allowed))
-                        die("Error: Please select a valid file format.");
-
-                    // Verify file size - 5MB maximum
-                    $maxsize = 5 * 1024 * 1024;
-                    if ($filesize > $maxsize)
-                        die("Error: File size is larger than the allowed limit.");
-
-                    // Verify MYME type of the file
-                    if (in_array($filetype, $allowed)) {
-                        // Check whether file exists before uploading it
-                        if (file_exists("img/img_slider/" . $_FILES["photo_slider"]["name"])) {
-                            echo $_FILES["photo_slider"]["name"] . " is already exists.";
-                        } else {
-                            move_uploaded_file($_FILES["photo_slider"]["tmp_name"], "img/img_slider/" . $_FILES["photo_slider"]["name"]);
-                            echo "<script>alert('Your Slider picture was uploaded successfully');
-                            window.location.href = '../cartoonint';
-                            </script>";
-                        }
-                    } else {
-                        echo "Error: There was a problem uploading your file. Please try again.";
-                    }
-                } else {
-                    // echo "Error: " . $_FILES["photo_slider"]["error"];
-                }
-            }
-
-            // Retrieve the names of all the uploaded files
-            $uploaded_files = array_diff(scandir("img/img_slider/"), array('.', '..'));
-
-            // Display the images on the page
-            foreach ($uploaded_files as $file) {
-
-                echo '<div class="w-50 p-3">
-                    <img class="img-fluid rounded img-thumbnail " src="img/img_slider/' . $file . '" alt="' . $file . '" />
-                </div>';
-            }
-
-            ?>
-
-        </div>
-
-    </div>
-
-
-    <!-- TAB 3 -->
-    <div id="Tab3" class="tabcontent container text-center">
-        <div class="container text-center">
-            <h2 class="text-center">Image Slider</h2>
-        </div>
-        <div class="container text-center upload-section">
-            <form action="index.php" method="post">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="slider_image" placeholder="Image URL" required>
-                </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" name="slider_title" placeholder="Image Title" required>
-
-                </div>
-                <br>
-                <input class="btn btn-success" type="submit" value="Submit">
-            </form>
-            <hr>
-            <div class="text-center">
-                <a href="json/data_slider.json"><button class="btn btn-info">All Slider in JSON</button></a>
             </div>
-            <hr>
-        </div>
-        <hr>
-        <div class="text-center">
-            <form action="index.php" method="post">
-                <div>
-                    <input type="hidden" name="sliderDelete" value="1">
-                    <input class="btn btn-danger" type="submit" value="Delete All Data">
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- TAB 4 -->
-    <div id="Tab4" class="tabcontent container text-center">
-        <div class="container text-center">
-            <h2 class="text-center">Item Category</h2>
-        </div>
-        <div class="container text-center upload-section">
-            <form action="index.php" method="post">
-                <div class="input-group">
-                    <input class="form-control" type="number" id="catArrayList" name="catArrayListN"
-                        placeholder="Cat. Array List number">
+            <div class="col py-3">
+                <!-- Tab content -->
+                <div id="Tab1" class="tabcontent">
+                    <p class="text-center fs-4 fw-bold">Cartoon International Mobile Apps</p>
+                    <h2 class="text-center">Dashboard</h2>
+                    <?php
+
+                    // Image Slider Data
+                    $json_data = file_get_contents("json/data_slider.json");
+                    $data = json_decode($json_data, true);
+
+                    echo "<p class='text-center fs-3'>Server have Image Slider data: <span class='text-center fs-3 fw-bold'>" . count($data) . "</span></p>";
+
+                    ?>
                 </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="category_name" name="category_name2"
-                        placeholder="Category Name" required>
+
+                <!-- TAB 2 -->
+                <div id="Tab2" class="tabcontent">
+                <div class="container text-center">
+                        <h3 class="text-center">Notice Section</h3>
+                    </div>
+
+                    <hr>
+
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/image_upload.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-cloud-upload"></i>
+                                        <h5 class="card-title">Upload Image</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/video_add.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-images"></i>
+                                        <h5 class="card-title">All Images</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/video_add.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-images"></i>
+                                        <h5 class="card-title">Slider Category</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <form action="index.php" method="post">
+                            <div>
+                                <input type="hidden" name="catDelete" value="1">
+                                <input class="btn btn-danger" type="submit" value="Delete All Data">
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="url" id="img_url" name="img_url2" placeholder="Image Url"
-                        required>
+
+
+                <!-- TAB 3 -->
+                <div id="Tab3" class="tabcontent container text-center">
+                    <div class="container text-center">
+                        <h2 class="text-center">Image Slider</h2>
+                    </div>
+                    <div class="container text-center upload-section">
+                        <form action="index.php" method="post">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="slider_image" placeholder="Image URL"
+                                    required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="slider_title" placeholder="Image Title"
+                                    required>
+
+                            </div>
+                            <br>
+                            <input class="btn btn-success" type="submit" value="Submit">
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a href="json/data_slider.json"><button class="btn btn-info">All Slider in JSON</button></a>
+                        </div>
+                        <hr>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <form action="index.php" method="post">
+                            <div>
+                                <input type="hidden" name="sliderDelete" value="1">
+                                <input class="btn btn-danger" type="submit" value="Delete All Data">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_id" name="vdo_id2" placeholder="Video Id" required>
+
+                <!-- TAB 4 -->
+                <div id="Tab4" class="tabcontent">
+                    <div class="container text-center">
+                        <h3 class="text-center">Notice Section</h3>
+                    </div>
+
+                    <hr>
+
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/category_add.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-plus-circle-fill"></i>
+                                        <h5 class="card-title">Add Category</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/video_add.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-plus-circle-fill"></i>
+                                        <h5 class="card-title">Add Video</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <form action="index.php" method="post">
+                            <div>
+                                <input type="hidden" name="catDelete" value="1">
+                                <input class="btn btn-danger" type="submit" value="Delete All Data">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_title" name="vdo_title2" placeholder="Video Title"
-                        required>
-                </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_description" name="vdo_description2"
-                        placeholder="Video Description" required>
-                </div>
-                <br>
-                <input class="btn btn-success" type="submit" value="Submit">
-            </form>
-            <hr>
-            <div class="text-center">
-                <a href="json/data_category.json"><button class="btn btn-info">All Slider in JSON</button></a>
+
             </div>
-            <hr>
         </div>
-        <hr>
-        <div class="text-center">
-            <form action="index.php" method="post">
-                <div>
-                    <input type="hidden" name="catDelete" value="1">
-                    <input class="btn btn-danger" type="submit" value="Delete All Data">
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- TAB 5 -->
-    <div id="Tab5" class="tabcontent container text-center">
-        <div class="container text-center">
-            <h2 class="text-center">Item Video</h2>
-        </div>
-        <div class="container text-center upload-section">
-            <form action="index.php" method="post">
-                <div class="input-group">
-                    <input class="form-control" type="number" id="catArrayList" name="catArrayListNum"
-                        placeholder="Category Array List No:" required>
-                </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_id" name="vdo_id" placeholder="Video Id" required>
-
-                </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_title" name="vdo_title" placeholder="Video Title"
-                        required>
-
-                </div>
-                <br>
-                <div class="input-group">
-                    <input class="form-control" type="text" id="vdo_description" name="vdo_description"
-                        placeholder="Video Description" required>
-
-                </div>
-                <br>
-                <input class="btn btn-success" type="submit" value="Submit">
-            </form>
-            <hr>
-            <div class="text-center">
-                <a href="json/data_category.json"><button class="btn btn-info">All Slider in JSON</button></a>
-            </div>
-            <hr>
-        </div>
-        <hr>
-        <!-- <div class="text-center">
-            <form action="index.php" method="post">
-                <div>
-                    <input type="hidden" name="sliderDelete" value="1">
-                    <input class="btn btn-danger" type="submit" value="Delete All Data">
-                </div>
-            </form>
-        </div> -->
     </div>
 
 
