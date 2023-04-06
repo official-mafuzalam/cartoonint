@@ -1,1 +1,16 @@
-{"sliderImageList":[{"slider_image":"http:\/\/localhost\/cartoonint\/img\/img_slider\/Screenshot_2021.10.20_14.23.47.452.jpg","slider_title":"Paste the SVG right into your project's code."},{"slider_image":"http:\/\/localhost\/cartoonint\/img\/img_slider\/Screenshot_2021.10.20_14.23.47.452.jpg","slider_title":"Paste the SVG right into your project's code."}]}
+{
+  "sliderImageList": [
+    {
+      "slider_image": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "slider_title": "Paste the SVG right into your project's code."
+    },
+    {
+      "slider_image": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "slider_title": "Paste the SVG right into your project's code."
+    },
+    {
+      "slider_image": "http://localhost/cartoonint/img_slider/642b27568359a.png",
+      "slider_title": "Mafuz Alam CMT"
+    }
+  ]
+}

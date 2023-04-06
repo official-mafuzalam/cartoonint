@@ -34,40 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // }
     } elseif (isset($_POST['slider_image'])) {
 
-        $slider_image = $_POST['slider_image'];
-        $slider_title = $_POST['slider_title'];
 
-        // Read the existing JSON object from the file
-        $json_data = file_get_contents("json/data_slider.json");
-        $data = json_decode($json_data, true);
-
-        // Add the new data to the existing array
-        $data['sliderImageList'][] = array(
-            'slider_image' => $slider_image,
-            'slider_title' => $slider_title
-        );
-
-        // Save the updated JSON object to the file
-        file_put_contents('json/data_slider.json', json_encode($data));
-
-        echo "<script>alert('Successfully Submitted Slider data');
-            window.location.href = '../cartoonint';
-            </script>";
     } elseif (isset($_POST['catArrayListN'])) {
 
     } elseif (isset($_POST['catArrayListNum'])) {
 
     } elseif (isset($_POST['sliderDelete'])) {
 
-        $file = fopen('json/data_slider.json', 'w');
-        fseek($file, 0);
-        ftruncate($file, 0);
-        fwrite($file, '[]');
-        fclose($file);
-
-        echo "<script>alert('Successfully Deleted all Slider data!');
-        window.location.href = '../cartoonint';
-        </script>";
     } elseif (isset($_POST['catDelete'])) {
 
         $file = fopen('json/data_category.json', 'w');
@@ -126,12 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </li>
                         <li>
-                            <a class="tab nav-link" onclick="openTab(event, 'Tab3')">
-                                <i class="fs-4 bi-images"></i>
-                                <span class="ms-1 d-none d-sm-inline">Slider Item</span>
-                            </a>
-                        </li>
-                        <li>
                             <a class="tab nav-link" onclick="openTab(event, 'Tab4')">
                                 <i class="fs-4 bi-play-btn"></i>
                                 <span class="ms-1 d-none d-sm-inline">Category</span>
@@ -144,23 +111,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col py-3">
                 <!-- Tab content -->
                 <div id="Tab1" class="tabcontent">
-                    <p class="text-center fs-4 fw-bold">Cartoon International Mobile Apps</p>
+                    <h1 class="text-center fw-bold">Cartoon International Mobile App</h1>
                     <h2 class="text-center">Dashboard</h2>
+
+                    <strong>
+                        <p class="text-center fs-5" id="date">
+                            <?php echo date("d-m-Y") . " " . date("l"); ?>
+                        </p>
+                    </strong>
                     <?php
 
                     // Image Slider Data
                     $json_data = file_get_contents("json/data_slider.json");
                     $data = json_decode($json_data, true);
 
-                    echo "<p class='text-center fs-3'>Server have Image Slider data: <span class='text-center fs-3 fw-bold'>" . count($data) . "</span></p>";
+                    echo "<p class='text-center fs-3'>Server have Image Slider data: 
+                    <span class='fw-bold'>" . count($data['sliderImageList']) . "</span></p>";
 
                     ?>
                 </div>
 
                 <!-- TAB 2 -->
                 <div id="Tab2" class="tabcontent">
-                <div class="container text-center">
-                        <h3 class="text-center">Notice Section</h3>
+                    <div class="container text-center">
+                        <h3 class="text-center">Image Section</h3>
                     </div>
 
                     <hr>
@@ -178,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="col-md-3">
                             <div class="card text-center bg-warning bg-opacity-75">
-                                <a class="text-decoration-none" href="other/video_add.php">
+                                <a class="text-decoration-none" href="other/image_all.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-images"></i>
                                         <h5 class="card-title">All Images</h5>
@@ -188,69 +162,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="col-md-3">
                             <div class="card text-center bg-warning bg-opacity-75">
-                                <a class="text-decoration-none" href="other/video_add.php">
+                                <a class="text-decoration-none" href="other/slider_add.php">
                                     <div class="card-body text-black">
-                                        <i class="fs-4 bi-images"></i>
-                                        <h5 class="card-title">Slider Category</h5>
+                                        <i class="fs-4 bi-plus-circle-fill"></i>
+                                        <h5 class="card-title">Slider Add</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-warning bg-opacity-75">
+                                <a class="text-decoration-none" href="other/slider_all.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-table"></i>
+                                        <h5 class="card-title">All Slider</h5>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="text-center">
-                        <form action="index.php" method="post">
-                            <div>
-                                <input type="hidden" name="catDelete" value="1">
-                                <input class="btn btn-danger" type="submit" value="Delete All Data">
-                            </div>
-                        </form>
-                    </div>
 
                 </div>
 
 
-                <!-- TAB 3 -->
-                <div id="Tab3" class="tabcontent container text-center">
-                    <div class="container text-center">
-                        <h2 class="text-center">Image Slider</h2>
-                    </div>
-                    <div class="container text-center upload-section">
-                        <form action="index.php" method="post">
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="slider_image" placeholder="Image URL"
-                                    required>
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="slider_title" placeholder="Image Title"
-                                    required>
-
-                            </div>
-                            <br>
-                            <input class="btn btn-success" type="submit" value="Submit">
-                        </form>
-                        <hr>
-                        <div class="text-center">
-                            <a href="json/data_slider.json"><button class="btn btn-info">All Slider in JSON</button></a>
-                        </div>
-                        <hr>
-                    </div>
-                    <hr>
-                    <div class="text-center">
-                        <form action="index.php" method="post">
-                            <div>
-                                <input type="hidden" name="sliderDelete" value="1">
-                                <input class="btn btn-danger" type="submit" value="Delete All Data">
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
                 <!-- TAB 4 -->
                 <div id="Tab4" class="tabcontent">
                     <div class="container text-center">
-                        <h3 class="text-center">Notice Section</h3>
+                        <h3 class="text-center">Category Section</h3>
                     </div>
 
                     <hr>
