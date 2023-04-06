@@ -1,29 +1,94 @@
 {
   "catArrayList": [
     {
-      "category_name": "A",
-      "img": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "category_name": "Nursery Rhymes",
+      "img": "http://apps.friendsit.xyz/cartoonint/img/img_slider/Nursery%20Rhymes.jpg",
       "videoArrayList": [
         {
-          "vdo_id": "dyGC1LS3-b4",
-          "vdo_title": "Mujhe Pyaar Hua Tha Episode 17",
-          "vdo_desciption": "Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+          "vdo_id": "xFtGu0yU76E",
+          "vdo_title": "Mona and Sketch Play Dress Up | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Mona and Sketch Play Dress Up | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "U1cIsVyTLrw",
+          "vdo_title": "Anything is Possible with Mona and Sketch! | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Anything is Possible with Mona and Sketch! | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "VY31PhjrF2s",
+          "vdo_title": "Dressing up with Mona and Sketch | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Dressing up with Mona and Sketch | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "2VfVJTCNcuU",
+          "vdo_title": "Make Believe with Mona and Sketch | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Make Believe with Mona and Sketch | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "w89LNKSS0w4",
+          "vdo_title": "Lola Helps Her Animal Friends | Little Lola | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Lola Helps Her Animal Friends | Little Lola | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "h1oRgO4Gzqo",
+          "vdo_title": "Lola's Advntures at the Park | Lola Visits the City | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Lola's Advntures at the Park | Lola Visits the City | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "QUJDbZRDpPA",
+          "vdo_title": "Another Day of Magic With Little Lola in the City | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Another Day of Magic With Little Lola in the City | Kids Songs & Nursery Rhymes"
+        },
+        {
+          "vdo_id": "NT9ODiENi-8",
+          "vdo_title": "Another Day of Magic With Little Lola in the City | Kids Songs & Nursery Rhymes",
+          "vdo_desciption": "Another Day of Magic With Little Lola in the City | Kids Songs & Nursery Rhymes"
         }
       ]
     },
     {
-      "category_name": "B",
-      "img": "http://localhost/cartoonint/img/img_slider/Screenshot_2021.10.20_14.23.47.452.jpg",
+      "category_name": "Gopal Bhar",
+      "img": "http://apps.friendsit.xyz/cartoonint/img/img_slider/Gopal%20Vhar.jpg",
       "videoArrayList": [
         {
-          "vdo_id": "dyGC1LS3-b4",
-          "vdo_title": "2 Mujhe Pyaar Hua Tha Episode 17",
-          "vdo_desciption": "2 Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+          "vdo_id": "rRAQI46P3WA",
+          "vdo_title": "HASIMUKHE NABOBARSHO | Best of Gopal 2022 - Bengali New year Pujo Special",
+          "vdo_desciption": "HASIMUKHE NABOBARSHO | Best of Gopal 2022 - Bengali New year Pujo Special"
         },
         {
-          "vdo_id": "dyGC1LS3-b4",
-          "vdo_title": "Mujhe Pyaar Hua Tha Episode 17",
-          "vdo_desciption": "Mujhe Pyaar Hua Tha; What You Want & What Your Destiny Wants  Mujhe Pyaar Hua Tha is a love triangle between Maheer, Saad, and Areeb. Saad has always been in love with his cousin Maheer but when he fails to confess it to her, life takes a different turn  Written By: Sidra Sehar Imran Directed By: Badar Mehmood"
+          "vdo_id": "0NL2hwE3FeQ",
+          "vdo_title": "HARI KHULE HARI BHANGA | Best of Gopal 2022 - Bengali New year Pujo Special",
+          "vdo_desciption": "HARI KHULE HARI BHANGA | Best of Gopal 2022 - Bengali New year Pujo Special"
+        },
+        {
+          "vdo_id": "iiQnQKZ2_6w",
+          "vdo_title": "ASUR NIDHAN | Best of Gopal 2022 - Pujo Special",
+          "vdo_desciption": "ASUR NIDHAN | Best of Gopal 2022 - Pujo Special"
+        },
+        {
+          "vdo_id": "hCz3USvSwDI",
+          "vdo_title": "KALOM BENCHE SARASWATEE PUJO | Best of Gopal 2022 - Saraswati Pujo Special",
+          "vdo_desciption": "KALOM BENCHE SARASWATEE PUJO | Best of Gopal 2022 - Saraswati Pujo Special"
+        },
+        {
+          "vdo_id": "bfj0tWC0ZvM",
+          "vdo_title": "PANDIT-ER BAGDEBEE ARADHONA | Best of Gopal 2022 - Saraswati Pujo Special",
+          "vdo_desciption": "PANDIT-ER BAGDEBEE ARADHONA | Best of Gopal 2022 - Saraswati Pujo Special"
+        },
+        {
+          "vdo_id": "51ic9kaMFK4",
+          "vdo_title": "ENGREJ BIDAY | Best of Gopal 2022 - Christmas Special",
+          "vdo_desciption": "ENGREJ BIDAY | Best of Gopal 2022 - Christmas Special"
+        },
+        {
+          "vdo_id": "5eCPsA82jo4",
+          "vdo_title": "BASTRO JAKHAN ASTRO | Best of Gopal 2022 - Christmas Special",
+          "vdo_desciption": "BASTRO JAKHAN ASTRO | Best of Gopal 2022 - Christmas Special"
+        },
+        {
+          "vdo_id": "9iAzdYi7gQc",
+          "vdo_title": "ALOR UTSAB | Best of Gopal 2022 - KaliPujo Special",
+          "vdo_desciption": "ALOR UTSAB | Best of Gopal 2022 - KaliPujo Special"
         }
       ]
     }

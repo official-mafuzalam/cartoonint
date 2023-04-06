@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+}
+
+$session_name = $_SESSION['name'];
+
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if file was uploaded without errors
@@ -99,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </li>
                         <li>
-                            <a class="tab nav-link" onclick="openTab(event, 'Tab4')">
+                            <a class="tab nav-link" onclick="openTab(event, 'Tab3')">
                                 <i class="fs-4 bi-play-btn"></i>
                                 <span class="ms-1 d-none d-sm-inline">Category</span>
                             </a>
@@ -125,10 +133,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $json_data = file_get_contents("json/data_slider.json");
                     $data = json_decode($json_data, true);
 
-                    echo "<p class='text-center fs-3'>Server have Image Slider data: 
-                    <span class='fw-bold'>" . count($data['sliderImageList']) . "</span></p>";
+                    // Category Data
+                    $json_cat_data = file_get_contents('json/data_category.json');
+                    $cat_data = json_decode($json_cat_data, true);
 
                     ?>
+
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col-md-3">
+                            <div class="card text-center bg-info bg-opacity-50">
+                                <div class="card-body text-black">
+                                    <h5 class="card-title">Image Slider</h5>
+                                    <p class="card-text fs-3 fw-bold">
+                                        <?php
+                                        if (isset($data['sliderImageList']) && is_array($data['sliderImageList'])) {
+                                            echo count($data['sliderImageList']);
+                                        } else {
+                                            echo "0";
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-danger bg-opacity-50">
+                                <div class="card-body text-black">
+                                    <h5 class="card-title">Total Video Category</h5>
+                                    <p class="card-text fs-3 fw-bold">
+                                        <?php
+                                        if (isset($cat_data['catArrayList']) && is_array($cat_data['catArrayList'])) {
+                                            echo count($cat_data['catArrayList']);
+                                        } else {
+                                            echo "0";
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-primary bg-opacity-50">
+                                <div class="card-body text-black">
+                                    <h5 class="card-title">Total Video</h5>
+                                    <p class="card-text fs-3 fw-bold">
+                                        <?php
+                                        if (isset($cat_data['catArrayList']) && is_array($cat_data['catArrayList'])) {
+                                            $total_videos = 0;
+                                            foreach ($cat_data['catArrayList'] as $category) {
+                                                if (isset($category['videoArrayList']) && is_array($category['videoArrayList'])) {
+                                                    $total_videos += count($category['videoArrayList']);
+                                                }
+                                            }
+                                            echo $total_videos;
+                                        } else {
+                                            echo "0";
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <!-- TAB 2 -->
@@ -141,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         <div class="col-md-3">
-                            <div class="card text-center bg-warning bg-opacity-75">
+                            <div class="card text-center bg-info bg-opacity-75">
                                 <a class="text-decoration-none" href="other/image_upload.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-cloud-upload"></i>
@@ -151,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card text-center bg-warning bg-opacity-75">
+                            <div class="card text-center bg-primary bg-opacity-50">
                                 <a class="text-decoration-none" href="other/image_all.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-images"></i>
@@ -161,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card text-center bg-warning bg-opacity-75">
+                            <div class="card text-center bg-danger bg-opacity-50">
                                 <a class="text-decoration-none" href="other/slider_add.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-plus-circle-fill"></i>
@@ -187,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                 <!-- TAB 4 -->
-                <div id="Tab4" class="tabcontent">
+                <div id="Tab3" class="tabcontent">
                     <div class="container text-center">
                         <h3 class="text-center">Category Section</h3>
                     </div>
@@ -196,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         <div class="col-md-3">
-                            <div class="card text-center bg-warning bg-opacity-75">
+                            <div class="card text-center bg-warning bg-opacity-50">
                                 <a class="text-decoration-none" href="other/category_add.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-plus-circle-fill"></i>
@@ -206,7 +273,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card text-center bg-warning bg-opacity-75">
+                            <div class="card text-center bg-info bg-opacity-75">
+                                <a class="text-decoration-none" href="other/category_all.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-table"></i>
+                                        <h5 class="card-title">All Category</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center bg-primary bg-opacity-25">
                                 <a class="text-decoration-none" href="other/video_add.php">
                                     <div class="card-body text-black">
                                         <i class="fs-4 bi-plus-circle-fill"></i>
@@ -215,15 +292,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="text-center">
-                        <form action="index.php" method="post">
-                            <div>
-                                <input type="hidden" name="catDelete" value="1">
-                                <input class="btn btn-danger" type="submit" value="Delete All Data">
+                        <div class="col-md-3">
+                            <div class="card text-center bg-danger bg-opacity-25">
+                                <a class="text-decoration-none" href="other/video_all.php">
+                                    <div class="card-body text-black">
+                                        <i class="fs-4 bi-table"></i>
+                                        <h5 class="card-title">All Video</h5>
+                                    </div>
+                                </a>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
 

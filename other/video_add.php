@@ -1,19 +1,12 @@
 <?php
 
-// Set the timezone to Bangladesh
-// date_default_timezone_set('Asia/Dhaka');
-// include '../inc/conn.php';
-// session_start();
+session_start();
 
-// // Check if user is logged in, otherwise redirect to login page
-// if (!isset($_SESSION['w_type'])) {
-//     header('Location: ../login.php');
-//     exit();
-// }
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+}
 
-// $session_user_id = $_SESSION['user_id'];
-// $session_user_name = $_SESSION['username'];
-// $session_technology = $_SESSION['technology'];
+$session_name = $_SESSION['name'];
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -10,15 +10,15 @@ $session_name = $_SESSION['name'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if file was uploaded without errors
-    if (isset($_POST['delete_slider'])) {
+    if (isset($_POST['delete_category'])) {
 
-        $file = fopen('../json/data_slider.json', 'w');
+        $file = fopen('../json/data_category.json', 'w');
         fseek($file, 0);
         ftruncate($file, 0);
         fwrite($file, '[]');
         fclose($file);
 
-        echo "<script>alert('Successfully Deleted all Slider data!');
+        echo "<script>alert('Successfully Deleted all Category data!');
         window.location.href = '../';
         </script>";
 
@@ -45,19 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     include '../inc/navbar.php';
     ?>
-
+    
     <div class="container text-center">
         <a class="text-decoration-none" href="../">
             <h2 class="fw-bold">Cartoon International</h2>
         </a>
-        <p class="fs-4">All Image Slider List.</p>
+        <p class="fs-4">All Video Category.</p>
         <hr>
     </div>
 
     <div class="container text-center">
 
         <?php
-        $json_data = file_get_contents('../json/data_slider.json');
+        $json_data = file_get_contents('../json/data_category.json');
         $data = json_decode($json_data, true);
         ?>
         <table class="table table-hover">
@@ -70,22 +70,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </thead>
             <tbody>
                 <?php
-                $i = 0;
-                foreach ($data['sliderImageList'] as $row) { ?>
-                    <tr>
-                        <td>
-                            <?php echo $i; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['slider_title']; ?>
-                        </td>
-                        <td>
-                            <button id="delete-<?php echo $i; ?>" class="dlt-post">Delete</button>
-                        </td>
-                    </tr>
-                    <?php
-                    $i++;
-                } ?>
+                if (isset($data['catArrayList']) && is_array($data['catArrayList'])) {
+                    $i = 0;
+                    foreach ($data['catArrayList'] as $row) { ?>
+                        <tr>
+                            <td>
+                                <?php echo $i; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['category_name']; ?>
+                            </td>
+                            <td>
+                                <button id="delete-<?php echo $i; ?>" class="dlt-cate">Delete</button>
+                            </td>
+                        </tr>
+                        <?php
+                        $i++;
+                    }
+                }
+                ?>
             </tbody>
         </table>
         <hr>
@@ -93,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="text-center">
         <form action="" method="post">
             <div>
-                <input type="hidden" name="delete_slider" value="1">
-                <input class="btn btn-danger" type="submit" value="Delete All Post">
+                <input type="hidden" name="delete_category" value="1">
+                <input class="btn btn-danger" type="submit" value="Delete All Category">
             </div>
         </form>
     </div>
@@ -110,13 +113,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Post Item Delete -->
     <script>
-        var deleteButtons = document.getElementsByClassName("dlt-post");
+        var deleteButtons = document.getElementsByClassName("dlt-cate");
         for (var i = 0; i < deleteButtons.length; i++) {
             deleteButtons[i].onclick = function () {
                 var id = this.id.split("-")[1];
                 var btn = 'hos';
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "../delete/delete_slider.php", true);
+                xhr.open("POST", "../delete/delete_category.php", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {

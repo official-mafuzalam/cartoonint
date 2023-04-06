@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+}
+
+$session_name = $_SESSION['name'];
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -12,9 +24,14 @@
 </head>
 
 <body>
+
+    <?php
+    include '../inc/navbar.php';
+    ?>
+
     <div class="container text-center">
         <a class="text-decoration-none" href="../">
-            <h2 class="fw-bold">Friends IT Ltd</h2>
+            <h2 class="fw-bold">Cartoon International</h2>
         </a>
         <p class="fs-4">All Images.</p>
         <hr>
@@ -58,9 +75,6 @@
             </tbody>
         </table>
 
-    </div>
-    <div class="text-center">
-        <a href="../json_image/json_img_post.php"><button class="btn btn-info">All Images In Json</button></a>
     </div>
 
 

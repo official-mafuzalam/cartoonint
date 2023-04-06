@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+}
+
+$session_name = $_SESSION['name'];
+
 // check if the form has been submitted
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -38,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // echo "Your file was uploaded successfully and saved as " . $file_name;
 
                     echo "<script>alert('Your Picture was uploaded successfully');
-                    window.location.href = 'all_images.php';
+                    window.location.href = 'image_all.php';
                     </script>";
 
                     // // Save the description in a text file with the same name as the image, but with a .txt extension
